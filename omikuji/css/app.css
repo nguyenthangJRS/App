@@ -1,0 +1,218 @@
+html{
+    font-size: 16px;
+    overflow: hidden;
+}
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    background-image: url(../img/13.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+   line-height: normal;
+   font-family: "Helvetica Neue",
+   Arial,
+   "Hiragino Kaku Gothic ProN",
+   "Hiragino Sans",
+   Meiryo,
+   sans-serif;
+    position: relative;
+/* background: linear-gradient(to bottom, #21EF82, #FFFFFF); */
+}
+.animation-1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+    z-index: 1;
+    animation: wellcome_1 1.3s ease-in 1.6s forwards;
+   
+}
+.animation-2{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+    z-index: 1;
+    animation: wellcome_2 1.3s ease-in 1.6s forwards;
+   
+}
+.animation-load{
+    position: absolute;
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    /* background: white; */
+    top: 45%;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+    opacity: 0;
+    animation: hide_load 2.1s ease-in-out forwards;
+   
+}
+.animation-load svg .path{
+    stroke-dasharray: 90;
+    stroke-dashoffset: 0;
+    animation : path 1.5s linear  forwards;
+}
+
+.btn__back{
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    margin-top: 3px;
+    margin: 3px 0 0 5px;
+    background: rgba(164, 176, 190,0.8);
+    height: 40px;
+    width: 70px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+
+}
+.btn__back:hover{
+    opacity: 0.7;
+    background: rgba(255, 71, 87,0.7);
+}
+.btn__back .back{
+    color: white;
+    text-decoration: none;
+}
+.footer{
+    margin: 0%;
+    padding: 0;
+}
+header{
+    /* margin-top: 80px; */
+    color: #0984e3;
+    font-weight: bold;
+    font-size: 38px;
+    text-align: center;
+}
+.wrapper{
+    position: relative;
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 23px;
+    display: flex;
+    justify-content: center;
+   
+}
+.wrapper a{
+    padding: 80px 50px;
+   position: absolute;
+    background: rgba(255,255,255,0.5);
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.7);
+    border-radius: 100%;
+    top: 30px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #353b48;
+    font-weight: bold;
+    /* backdrop-filter: blur(2px); */
+
+}
+/* footer */
+footer{
+    position: absolute;
+    bottom: 5px;
+    width : 100%;
+    margin: 0px;
+    padding: 1px;
+    color: whitesmoke;
+    font: 16px Rajdhani;
+    text-align: center;
+    background: rgba(1,24,31,0.7);
+}
+@keyframes wellcome_1 {
+        0%{
+            transform: translateY(0);
+        }
+        100%{
+            transform: translateY(-100%);
+            display: none;
+        }
+}
+@keyframes wellcome_2 {
+        0%{
+            transform: translateY(0);
+        }
+        100%{
+            transform: translateY(100%);
+            display: none;
+        }
+}
+@keyframes show_text {
+    0%{
+        transform: translateY(100px);
+    }
+    30%{
+        opacity: 1;
+        transform: translateY(-50px);
+    }
+    50%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    99%{
+        opacity: 0.2;
+        transform: translateY(0);
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
+@keyframes rote {
+    0%{
+        transform: rotate(0);
+    }
+    90%{
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+    100%{
+        transform: rotate(270deg);
+        opacity: 0;
+    }
+}
+@keyframes hide_load {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    80%{
+        opacity: 0.6;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
+@keyframes path{
+    0%{
+        stroke-dashoffset: 100;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+   }

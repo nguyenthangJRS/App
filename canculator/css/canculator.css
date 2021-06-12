@@ -1,0 +1,93 @@
+
+body{
+    background: url(../img/phongbg.jpg);
+}
+
+.canculator{
+    z-index: 1;
+    position: absolute;
+    top: 26%;
+    left: 25%;
+    background: rgba(26, 188, 156,0.4);
+    width: 50%;
+    height: 260px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.canculator form{
+    width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.canculator input{
+    width: 70%;
+    height: 30px;
+    margin: 10px;
+    outline: none;
+    box-shadow: 2px 6px 15px rgba(0,0,0,0.5);
+    border: none;
+    padding-left: 10px;
+}
+*::placeholder{
+    padding-left: 10px;
+}
+button[type='submit']{
+    border: none;
+    margin: 10px 0;
+    background: rgba(142, 68, 173,0.6);
+    padding: 6px 20px;
+    border-radius: 5px;
+    box-shadow: 2px 6px 15px rgba(0,0,0,0.5);
+}
+.canculator select{
+    width: 40%;
+    color: rgba(255,255,255,0.7);
+    border: none;
+    padding: 6px 0px 6px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    background: transparent;
+    border: 1px solid rgba(22, 160, 133,1.0);
+    border-radius: 5px;
+    appearance:  square-button;
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 2px 6px 15px rgba(0,0,0,0.5);
+
+}
+.canculator select option{
+    padding: 10px;
+    text-align: center;
+    background-color: grey;
+}
+.result{
+    width: 95%;
+    height: 45px;
+    background: rgba(149, 165, 166,0.8);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 6px 15px rgba(0,0,0,0.5);
+}
+.clean{
+    padding: 10px 20px;
+    position: absolute;
+    right: 5px;
+    top: 38%;
+    background: rgba(192, 57, 43,0.8);
+    z-index: 1;
+    height: 100px;
+    line-height: 100px;
+    box-shadow: 2px 6px 15px rgba(0,0,0,0.5);
+}
+.submit:active, .clean:active{
+    box-shadow: 2px 5px 10px rgba(45, 52, 54,0.9);
+}

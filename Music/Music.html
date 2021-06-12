@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="./css/play.css">
+    <link rel="stylesheet" href="./css/page.css">
+    <link rel="stylesheet" href="./css/music.css">
+    <title>Music</title>
+</head>
+<body>
+    <div class="btn__back">
+        <a href="../index.html " class="back">Back</a>
+    </div>
+    <div class="menu">
+        <div class="menu_btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="menu_list">
+        <ul class="list">
+            <li class="list_items items_brand">
+                <img src="./img/icon1.jpeg" alt="">
+            </li>
+            <li class="list_items items_1">
+                <img src="./img/register.png" alt="">
+                <a href="">Register</a>
+            </li>
+            <li class="list_items items_2">
+                <img src="./img/login.png" alt="">
+                <a href="">Log In</a>
+            </li>
+        </ul>
+    </div>
+    <div class="page">
+        <div class="page_img">
+            <img class="left" src="./img/left.png" alt="">
+            <img class="img_about" src="./img/song4.jpeg" alt="">
+            <img class="right" src="./img/right.png" alt="">
+        </div>
+        <div class="page_name"></div>
+        <div class="page_control">
+            <ul class="control_list">
+                <li class="control_items">
+                    <button class="btn_skip_back">
+                        <img src="./img/skip_back.png" alt="" onclick="skip('back')">
+                    </button>
+                </li>
+                <li class="control_items">
+                    <button class="running">
+                        <img src="./img/play_btn.png" alt="">
+                    </button>
+                </li>
+                <li class="control_items">
+                    <button class="btn_skip_next">
+                        <img src="./img/skip_next.png" alt="" onclick="skip('next')">
+                    </button>
+                </li>
+                <li class="control_items">
+                    <button class="loop">
+                        <img src="./img/setting.png" alt="" >
+                    </button>
+                </li>
+            </ul>
+            <div class="control_timeline">
+                <img src="./img/time.png" alt="">
+                <input type="range" value="0" max="" id="timeLine" oninput='setPos(this.value)'> 
+            </div>
+            <div class="control_volume">
+                <img src="./img/register.png" alt="">
+                <input type="range" value="0.5" max="1" min="0" step="0.01"oninput='setVolume(this.value),mute()'>
+            </div>
+        </div>
+        <div class="page_back">
+            <img src="./img/back.png" alt="">
+        </div>
+    </div>
+   <div class="main">
+       <div class="play">
+           <div class="play_img">
+               <img src="" alt="">
+               <div class="audio">
+                    <div class="play_audio">
+                        <img src="./img/play_btn.png" alt="">
+                    </div>
+                    <input type="range"id="seek" value="0" max="" oninput='setPos(this.value)'> 
+                    <div class="volume_audio">
+                        <img src="./img/register.png" alt="">
+                        <input type="range"id='volume'min='0' max= '1' step="0.01" value="0.5" oninput='setVolume(this.value),mute()'>
+                    </div>    
+            </div>
+           </div>
+           <div class="play_content">
+              
+               <div class="content_name"></div>
+               <div class="content_vote">
+                   <div class="vote">
+                       <span>Rate</span>
+                       <span>100%</span>
+                   </div>
+                   <div class="rate">
+                       <div class="rate_pacent"id='pacent'></div>
+                   </div>
+               </div>
+           </div>
+           <div class="play_btn">
+               <img src="./img/play.png" alt="">
+           </div>
+       </div>
+       <div class="playlist">
+           <ul class="play_song">
+               <li class="song run" song_name='theWorld'>
+                   <span class="song_id">1</span>
+                   <span>The World</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+               <li class="song " song_name='kibo'>
+                   <span class="song_id">2</span>
+                   <span>希望の唄</span>
+                   <span>
+                       <img src="./img/play_song.png" alt="">
+                   </span>
+               </li>
+               <li class="song " song_name='theHero'>
+                   <span class="song_id">3</span>
+                   <span>The Hero</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+               <li class="song " song_name='Voracity'>
+                   <span class="song_id">4</span>
+                   <span>Voracity</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+               <li class="song " song_name='yoruNiYokeru'>
+                   <span class="song_id">5</span>
+                   <span>Yoru Ni Kakeru</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+               <li class="song " song_name='Gurenge'>
+                   <span class="song_id">6</span>
+                   <span>Gurenge</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+               <li class="song " song_name='monogakari'>
+                   <span class="song_id">7</span>
+                   <span>Ikimono Gakari</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+               <li class="song " song_name='Voracity_1'>
+                   <span class="song_id">8</span>
+                   <span>Voracity 1</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+               <li class="song " song_name='yoruNiYokeru_1'>
+                   <span class="song_id">9</span>
+                   <span>Yoru Ni Kakeru 2</span>
+                   <span>
+                        <img src="./img/play_song.png" alt="">
+                    </span>
+               </li>
+           </ul>
+       </div>
+   </div>
+    <footer>
+        <p class="footer">Copyright 2021 NGUYEN TIEP THANG</p>
+    </footer>
+    <script src="./js/music.js"></script>
+    <script src="./js/song.js"></script>
+    
+</body>
+</html>
