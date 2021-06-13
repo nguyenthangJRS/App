@@ -17,21 +17,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 .page_img .left, .page_img .right{
     width: 50px;
     height: 50px;
 }
 .page_img .left{
-    margin-right: 20px;
+    margin-right: 14px;
 }
 .page_img .right{
-    margin-left: 20px;
+    margin-left: 14px;
 }
-.page_img img{
+.page_img .img_about{
     height: 250px;
     max-width: 250px;
     border-radius: 100%;
+    box-shadow: 5px 5px 15px rgba(255,255,255,0.3),
+                -5px -5px 15px rgba(255,255,255,0.3),
+                5px -5px 15px rgba(255,255,255,0.3),
+                -5px 5px 15px rgba(255,255,255,0.3);
    
 }
 .page_control img{

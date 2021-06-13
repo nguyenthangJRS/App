@@ -15,17 +15,6 @@ app.forEach(app =>{
    }
 })
 
-
-// window. addEventListener("DOMContentLoaded",function() {
-//     btn.addEventListener('click',function(){
-//         let mesaage = "Wellcome to おみくじ game";
-//         window.alert(mesaage);
-//     })
-
-// }, false
-// );
-
-
 btn.onclick = () => {
     window.alert('Wellcome to おみくじ');
 }

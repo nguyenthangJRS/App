@@ -1,27 +1,22 @@
-play_btn.onclick = () => {
-    page.animate([
-        {transform : 'translateX(100%)'},
-        {transform : 'translateX(0)'},
+
+const back_animation = (local,start,end) => {
+    local.animate([
+        {transform : `translateX(${start}%)`},
+        {transform : `translateX(${end}%)`},
     ],{
         duration : 600,
         fill : 'forwards'
     })
 }
+play_btn.onclick = () => {
+    back_animation(page,100,0);
+}
 page_back.onclick = () => {
-    page.animate([
-        {transform : 'translateX(0)'},
-        {transform : 'translateX(100%)'},
-    ],{
-        duration : 600,
-        fill : 'forwards'
-    })
+    back_animation(page,0,100);
 }
 song_running.onclick = () => {
     play_check = !play_check;
-    play_check ? song_running.querySelector('img').setAttribute('src','./img/pause.png') :  song_running.querySelector('img').setAttribute('src','./img/play_btn.png');
-    play_check ? play.querySelector('img').setAttribute('src','./img/pause.png') :  play.querySelector('img').setAttribute('src','./img/play_btn.png');
-    play_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
-    page_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
+    runMusic();
     playPause();
 }
 ////////////////////////////////////////////////////////

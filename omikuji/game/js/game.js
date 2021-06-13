@@ -11,33 +11,17 @@ key.forEach(key => {
         const result = e.target.innerHTML
        
         ans.textContent = parseInt(result) || parseInt(result) === 0 ?  `${result}` : '';
-
-        // result === 'Del' ? console.log(1) : console.log(2) 
         if(result === "Enter"){
             console.log('Enter')
         }
-
-
-        // console.log( parseInt(result))
     }
 })
-
-
 // show_ans
-
-
-
-
-
 // question
 let random_number_1 = Math.round(Math.random()*5)
 let random_number_2 = Math.round(Math.random()*4)
 const cancul = ['+','-'];
 const ranC = Math.round(Math.random()*2);
-// let result_ques = ranC === 1 ? random_number_1 + random_number_2 : random_number_1 - random_number_2
-// console.log(result_ques)
-// console.log(random_number_1 + random_number_2)
-
 
 const mondai = ()=>{
     if(random_number_2 > random_number_1){
@@ -51,7 +35,6 @@ const mondai = ()=>{
 }
 
 // question
-
 //countdown time
 let num = 5;
 const countdown = () => {

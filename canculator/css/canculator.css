@@ -55,7 +55,7 @@ button[type='submit']{
     background: transparent;
     border: 1px solid rgba(22, 160, 133,1.0);
     border-radius: 5px;
-    appearance:  square-button;
+    /* appearance:  square-button; */
     position: relative;
     font-size: 30px;
     font-weight: bold;

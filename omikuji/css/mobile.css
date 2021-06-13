@@ -8,10 +8,6 @@
         overflow: hidden;
         flex-direction: column;
     }
-    .animation-load{
-        /* top: 46%;
-        left: 30%; */
-    }
     header{
         margin-top: 80px;
         color: rgba(85, 239, 196,1.0);
@@ -29,7 +25,6 @@
         background: rgba(255,255,255,0.5);
         border-radius: 15px;
         font-size: 30px;
-        backdrop-filter: blur(2px);
         display: flex;
         justify-content: center;
         align-items: center;

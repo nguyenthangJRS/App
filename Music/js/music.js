@@ -38,52 +38,70 @@ volume_audio.onclick = () => {
     check_volume = !check_volume;
     volume_audio.nextElementSibling.style.display = check_volume ? `block` : `none`;
 }
-play.onclick = () => {
-    play_check = !play_check;
-    let url = play_check ? './img/pause.png' : './img/play_btn.png';
+const runMusic  = () =>{
     play_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none' ;
     page_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none' ;
+    let url = play_check ? './img/pause.png' : './img/play_btn.png';
     play.querySelector('img').setAttribute('src',url)
     song_running.querySelector('img').setAttribute('src',url);
+    
+ }
+play.onclick = () => {
+    play_check = !play_check;
+    runMusic();
     playPause();
 }
+
 
 music.onclick = () =>{
     music_check = !music_check
     if(music_check){
         music_span.forEach(item => {
-            item.classList.add('show');
-            item.classList.remove('hide')
+        item.classList.add('show');
+        item.classList.remove('hide')
         })
         list.style.animation = `show_menu 0.8s ease-in-out forwards`;
     }else{
-            music_span.forEach(item => {
-                item.classList.remove('show');
-                item.classList.add('hide');
-            })
-            list.style.animation = `hide_menu 0.8s ease-in-out forwards`;
+        music_span.forEach(item => {
+        item.classList.remove('show');
+        item.classList.add('hide');
+        })
+        list.style.animation = `hide_menu 0.8s ease-in-out forwards`;
     }
 }
-// console.log( playListSong)
 function run(data){
     const running = document.querySelector(data.run_song);
     const songArr = running.querySelectorAll('.song img');
     const song_name = data.song
 
-    content_name.textContent = `${song_name[0].name}`;
-    page_name.textContent = `${song_name[0].name}`;
-    aSong.src = `${song_name[0].url}`
-    play_img.setAttribute('src',`${song_name[0].img}`);
-    page_img.setAttribute('src',`${song_name[0].img}`);
-
-    list_Li[0].classList.add('run');
-    list_Li.forEach(i => {
+    const content = (num) => {
+        content_name.textContent = `${num.name}`;
+        page_name.textContent = `${num.name}`;
+        aSong.src = `${num.url}`
+        play_img.setAttribute('src',`${num.img}`);
+        page_img.setAttribute('src',`${num.img}`);
+    }
+    const check_run = (remove_run,add_run) => {
+        list_Li[remove_run].classList.remove('run');
+        list_Li[add_run].classList.add('run');
+        list_Li.forEach(i => {
         let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
         i.querySelector('img').setAttribute('src',att);
-    })
- /////////////////////////// next - prev song //////////////////////////
-    left.onclick = () => {
-        page_img.animate([
+        })
+        
+    }
+    const find_number = () => {
+        const songA = song_name.map(item =>{
+            return item.name
+        })
+        const newArr = songA;
+        const index = newArr.indexOf(content_name.textContent);
+        if(index >-1){
+            number = index;
+        }
+    }
+    const hide_left = (left) =>{
+        left.animate([
             {transform : 'translate(0)'},
             {transform : 'translate(-100px)',
             opacity : 0.2
@@ -91,81 +109,21 @@ function run(data){
         ],{
             duration : 500,
         })
-        // find song localtion/////////////////////////////////////////////
-        const songA = song_name.map(item =>{
-            return item.name
-        })
-        const newArr = songA;
-        const index = newArr.indexOf(content_name.textContent);
-        if(index >-1){
-            number = index;
-        }
-       
-
-        if(number > 0){
-            content_name.textContent = `${song_name[number-1].name}`;
-            page_name.textContent = `${song_name[number-1].name}`;
-            aSong.src = `${song_name[number-1].url}`
-            play_img.setAttribute('src',`${song_name[number-1].img}`);
-
-           
-            page_img.setAttribute('src',`${song_name[number-1].img}`)
-                page_img.animate([
-                    {transform : 'translate(100px)',
-                    opacity: 0
-                },
-                    {transform : 'translate(0)',
-                    opacity : 1
-                },
-                ],{
-                    duration : 500,
-                })
-          
-           
-
-            list_Li[number].classList.remove('run');
-            list_Li[number-1].classList.add('run');
-
-            list_Li.forEach(i => {
-                let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
-                i.querySelector('img').setAttribute('src',att);
-            })
-            
-            
-        }else if(number == 0) {
-            content_name.textContent = `${song_name[song_name.length-1].name}`;
-            page_name.textContent = `${song_name[song_name.length-1].name}`;
-            aSong.src = `${song_name[song_name.length-1].url}`
-            play_img.setAttribute('src',`${song_name[song_name.length-1].img}`);
-            // show img animate 
-            page_img.setAttribute('src',`${song_name[song_name.length-1].img}`);
-            page_img.animate([
-                {transform : 'translate(100px)',
-                opacity: 0
-            },
-                {transform : 'translate(0)',
-                opacity : 1
-            },
-            ],{
-                duration : 500,
-            })
-            list_Li[0].classList.remove('run');
-            list_Li[song_name.length-1].classList.add('run');
-            list_Li.forEach(i => {
-                let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
-                i.querySelector('img').setAttribute('src',att);
-            })
-            
-        }
-        play_check = false;
-        play.querySelector('img').setAttribute('src','./img/play_btn.png');
-        song_running.querySelector('img').setAttribute('src','./img/play_btn.png');
-        play_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
-        page_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
     }
-    right.onclick = () => {
-         // show img animate 
-        page_img.animate([
+    const show_left = (right) => {
+        right.animate([
+            {transform : 'translate(100px)',
+            opacity: 0
+        },
+            {transform : 'translate(0)',
+            opacity : 1
+        },
+        ],{
+            duration : 500,
+        })
+    }
+    const hide_right = (left) =>{
+        left.animate([
             {transform : 'translate(0)'},
             {transform : 'translate(100px)',
             opacity : 0.2
@@ -173,72 +131,64 @@ function run(data){
         ],{
             duration : 500,
         })
-         // show img animate 
-        const songA = song_name.map(item =>{
-            return item.name
+    }
+    const show_right = (right) => {
+        right.animate([
+            {transform : 'translate(-100px)',
+            opacity: 0
+        },
+            {transform : 'translate(0)',
+            opacity : 1
+        },
+        ],{
+            duration : 500,
         })
-        const newArr = songA;
-        const index = newArr.indexOf(content_name.textContent);
-        if(index >-1){
-            number = index;
+    }
+    const check_song_running = (list) => {
+        list.forEach(i => {
+            let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
+            i.querySelector('img').setAttribute('src',att);
+        })
+    }
+    //////////////////////////////////////////////////////////////////
+        content(song_name[4]);
+        list_Li[4].classList.add('run');
+        check_song_running(list_Li);
+ /////////////////////////// next - prev song //////////////////////////
+    left.onclick = () => {
+            hide_left(page_img);
+        // find song localtion/////////////////////////////////////////////
+            find_number();
+        if(number > 0){
+            content(song_name[number-1]);
+            show_left(page_img);
+            check_run(number,number-1);
+                
+        }else if(number == 0) {
+            content(song_name[song_name.length-1]);
+            show_left(page_img);
+            check_run(0,song_name.length-1);
         }
+        play_check = true;
+            runMusic();
+            aSong.play();
+    }
+    right.onclick = () => {
+            hide_right(page_img);
+            find_number();
         if(number >= song_name.length-1){
-            content_name.textContent = `${song_name[0].name}`;
-            page_name.textContent = `${song_name[0].name}`;
-            aSong.src = `${song_name[0].url}`
-            play_img.setAttribute('src',`${song_name[0].img}`);
+            content(song_name[0]);
+            show_right(page_img);
+            check_run(song_name.length-1,0);
 
-            // show img animate 
-            page_img.setAttribute('src',`${song_name[0].img}`);
-            page_img.animate([
-                {transform : 'translate(-100px)',
-                opacity: 0
-            },
-                {transform : 'translate(0)',
-                opacity : 1
-            },
-            ],{
-                duration : 500,
-            })
-
-            list_Li[song_name.length-1].classList.remove('run');
-            list_Li[0].classList.add('run');
-
-            list_Li.forEach(i => {
-                let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
-                i.querySelector('img').setAttribute('src',att);
-            })
-            
-            
         }else if(number >= 0) {
-            content_name.textContent = `${song_name[number+1].name}`;
-            page_name.textContent = `${song_name[number+1].name}`;
-            aSong.src = `${song_name[number+1].url}`
-            play_img.setAttribute('src',`${song_name[number+1].img}`);
-            page_img.setAttribute('src',`${song_name[number+1].img}`);
-            page_img.animate([
-                {transform : 'translate(-100px)',
-                opacity: 0
-            },
-                {transform : 'translate(0)',
-                opacity : 1
-            },
-            ],{
-                duration : 500,
-            })
-            list_Li[number].classList.remove('run');
-            list_Li[number+1].classList.add('run');
-            list_Li.forEach(i => {
-                let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
-                i.querySelector('img').setAttribute('src',att);
-            })
-            
+            content(song_name[number+1]);
+            show_right(page_img);
+            check_run(number,number+1)
         }
-        play_check = false;
-        play.querySelector('img').setAttribute('src','./img/play_btn.png');
-        song_running.querySelector('img').setAttribute('src','./img/play_btn.png');
-        play_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
-        page_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
+        play_check = true;
+            runMusic();
+            aSong.play();
     }
   //////////////////////////      // change time for media 
     aSong.ontimeupdate = () => {
@@ -251,11 +201,7 @@ function run(data){
         if(count === 1){
             if(aSong.currentTime >= parseInt(timeline.max)){
                 play_check = false;
-                play.querySelector('img').setAttribute('src','./img/play_btn.png');
-                song_running.querySelector('img').setAttribute('src','./img/play_btn.png');
-                play_check = false;
-                play_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none' ;
-                page_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none' ;
+                runMusic();
                 aSong.pause();
             }
         }
@@ -266,43 +212,19 @@ function run(data){
             }
         }
         if(count === 3){
-            const songA = song_name.map(item =>{
-                return item.name
-            })
-            const newArr = songA;
-            const index = newArr.indexOf(content_name.textContent);
-            if(index >-1){
-                number = index;
-            }
+            find_number();
             if(aSong.currentTime >= parseInt(timeline.max)){
                 if(number < song_name.length -1){
-                    content_name.textContent = `${song_name[number+1].name}`;
-                    page_name.textContent = `${song_name[number+1].name}`;
-                    aSong.src = `${song_name[number+1].url}`
-                    play_img.setAttribute('src',`${song_name[number+1].img}`);
-                    page_img.setAttribute('src',`${song_name[number+1].img}`);
-
-                    list_Li[number].classList.remove('run');
-                    list_Li[number+1].classList.add('run');
-
-                    list_Li.forEach(i => {
-                        let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
-                        i.querySelector('img').setAttribute('src',att);
-                    })
+                    content(song_name[number+1]);
+                    check_run(number,number+1);
+                    play_check =true;
+                    runMusic();
                     aSong.play();
-                    
                 }else if(number >= song_name.length -1) {
-                    content_name.textContent = `${song_name[0].name}`;
-                    page_name.textContent = `${song_name[0].name}`;
-                    aSong.src = `${song_name[0].url}`
-                    play_img.setAttribute('src',`${song_name[0].img}`);
-                    page_img.setAttribute('src',`${song_name[0].img}`);
-                    list_Li[song_name.length -1].classList.remove('run');
-                    list_Li[0].classList.add('run');
-                    list_Li.forEach(i => {
-                        let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
-                        i.querySelector('img').setAttribute('src',att);
-                    })
+                    content(song_name[0]);
+                    check_run(song_name.length -1,0)
+                    play_check =true;
+                    runMusic();
                     aSong.play();
                 }
             }
@@ -325,19 +247,12 @@ function run(data){
           let song_target = target.getAttribute('song_name');
           const target_Li = target.parentNode.querySelectorAll('li');
          
-        
           song_name.forEach(song => {
               if(song_target === song.className){
-                play_check = false
-                play_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
-                page_img.style.animation = play_check ? 'animate 30s linear infinite' : 'none';
-                content_name.textContent = `${song.name}`;
-                page_name.textContent = `${song.name}`;
-                aSong.src = `${song.url}`
-                play_img.setAttribute('src',`${song.img}`)
-                page_img.setAttribute('src',`${song.img}`)
-                play.querySelector('img').setAttribute('src','./img/play_btn.png');
-                song_running.querySelector('img').setAttribute('src','./img/play_btn.png');
+                play_check = true;
+                runMusic();
+                content(song);
+                aSong.play();
 
                 pacent.animate([
                     {transform : 'translateX(-100%)'},
@@ -354,10 +269,7 @@ function run(data){
                     }
                 })
                 target.classList.add('run');
-                target_Li.forEach(i => {
-                    let att = i.classList.contains('run') ? './img/song.png' :  './img/play_song.png';
-                    i.querySelector('img').setAttribute('src',att);
-                })
+                check_song_running(target_Li);
             }
           })
         }
@@ -381,7 +293,7 @@ run({
             url : './img/shokugeki.mp3',
             rate : 85,
             className : 'kibo',
-             img : './img/bg_2.jpg',
+             img : './img/ms4.jpeg',
         },
         {
               id :3,
@@ -389,7 +301,7 @@ run({
             url : './img/theHero.mp3',
             rate : 62,
             className : 'theHero',
-             img : './img/bg_3.jpg',
+             img : './img/ms5.jpeg',
         },
         {
               id :4,
@@ -434,7 +346,7 @@ run({
         {
               id :8,
             name : 'Ikimono Gakari',
-            url : './img/Yoru Ni Kakeru.mp3',
+            url : './img/ikimono.mp3',
             rate : 50,
             className : 'monogakari',
              img : './img/ms.jpeg',
