@@ -151,8 +151,8 @@ function run(data){
         })
     }
     //////////////////////////////////////////////////////////////////
-        content(song_name[4]);
-        list_Li[4].classList.add('run');
+        content(song_name[6]);
+        list_Li[6].classList.add('run');
         check_song_running(list_Li);
  /////////////////////////// next - prev song //////////////////////////
     left.onclick = () => {
@@ -288,68 +288,68 @@ run({
             img : './img/ms2.jpeg'
         },
         {
-              id :2,
+            id :2,
             name : '希望の唄',
             url : './img/shokugeki.mp3',
             rate : 85,
             className : 'kibo',
-             img : './img/ms4.jpeg',
+            img : './img/ms4.jpeg',
         },
         {
-              id :3,
+            id :3,
             name : 'The Hero',
             url : './img/theHero.mp3',
             rate : 62,
             className : 'theHero',
-             img : './img/ms5.jpeg',
+            img : './img/ms5.jpeg',
         },
         {
-              id :4,
+            id :4,
             name : 'Voracity',
             url : './img/voracity.mp3',
             rate : 85,
             className : 'Voracity',
-             img : './img/ms6.jpeg',
+            img : './img/ms6.jpeg',
         },
         {
-              id :5,
+            id :5,
             name : 'Yoru Ni Kakeru',
             url : './img/Yoru Ni Kakeru.mp3',
             rate : 50,
             className : 'yoruNiYokeru',
-             img : './img/ms3.jpeg',
+            img : './img/ms3.jpeg',
         },
         {
-              id :6,
+            id :6,
             name : 'Gurenge',
             url : './img/Gurenge - LiSA.mp3',
             rate : 65,
             className : 'Gurenge',
-             img : './img/ms9.jpeg',
+            img : './img/ms9.jpeg',
         },
         {
             id :7,
-          name : 'Voracity 1',
-          url : './img/voracity.mp3',
-          rate : 85,
-          className : 'Voracity_1',
-           img : './img/ms4.jpg',
-      },
-        {
-              id :8,
-            name : 'Yoru Ni Kakeru 1',
-            url : './img/Yoru Ni Kakeru.mp3',
-            rate : 50,
-            className : 'yoruNiYokeru_1',
-             img : './img/ms8.jpeg',
-        },
-        {
-              id :8,
             name : 'Ikimono Gakari',
             url : './img/ikimono.mp3',
             rate : 50,
             className : 'monogakari',
-             img : './img/ms.jpeg',
+            img : './img/ms.jpeg',
+      },
+        {
+            id :8,
+            name : 'Voracity 1',
+            url : './img/voracity.mp3',
+            rate : 85,
+            className : 'Voracity_1',
+            img : './img/ms4.jpg',
+      },
+        {
+            id :9,
+            name : 'Yoru Ni Kakeru 1',
+            url : './img/Yoru Ni Kakeru.mp3',
+            rate : 50,
+            className : 'yoruNiYokeru_1',
+            img : './img/ms8.jpeg',
         },
     ]
 })
