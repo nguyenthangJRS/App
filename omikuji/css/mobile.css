@@ -2,11 +2,11 @@
     body{
         background-size : cover;
         background-position: right 35% bottom 60%;;
-        /* overflow-y: hidden ; */
         display: flex;
         align-items: center;
         overflow: hidden;
         flex-direction: column;
+        height: unset;
     }
     header{
         margin-top: 80px;
@@ -14,25 +14,22 @@
         text-shadow: 2px 5px 15px #636e72;
     }
     .wrapper{
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        /* margin-left: -44%; */
-        width: 100%;
-    }
-    .wrapper a{
-        padding: 5px;
-        background: rgba(255,255,255,0.5);
-        border-radius: 15px;
-        font-size: 30px;
+        position: relative;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 23px;
         display: flex;
         justify-content: center;
+        height: 75vh;
+        z-index: 1;
+        flex-direction: column;
         align-items: center;
-        margin-top: 75px;
     }
-    .wrapper a span{
-        width: 213px;
-        padding: 23px 20px;
+    .result{
+        margin-top: 30px;
         text-align: center;
+        line-height: 50px;
+        border-radius: 5px;
     }
 }
