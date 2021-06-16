@@ -34,15 +34,19 @@ header{
     justify-content: center;
    z-index: 1;
 }
-.wrapper a{
+.wrapper p{
     padding: 80px 50px;
-   position: absolute;
+    position: absolute;
     background: rgba(255,255,255,0.5);
     box-shadow: 2px 5px 15px rgba(0,0,0,0.7);
     border-radius: 100%;
+    width: 221px;
+    height: 221px;
     top: 30px;
     text-decoration: none;
     font-size: 30px;
     color: #353b48;
     font-weight: bold;
+    text-align: center;
+    line-height: 68px;
 }

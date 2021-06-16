@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/play.css">
     <link rel="stylesheet" href="./css/page.css">
     <link rel="stylesheet" href="./css/music.css">
+    <link rel="stylesheet" href="./css/register.css">
     <title>Music</title>
 </head>
 <body>
@@ -25,18 +26,31 @@
             <span></span>
         </div>
     </div>
+    <div class="background"></div>
     <div class="menu_list">
+        <div class=" items_brand">
+            <img src="./img/icon1.jpeg" alt="">
+        </div>
         <ul class="list">
-            <li class="list_items items_brand">
-                <img src="./img/icon1.jpeg" alt="">
+            <li class="list_items items_1 register">
+                <img src="./img/regis.png" alt="">
+                <a>Register</a>
             </li>
-            <li class="list_items items_1">
-                <img src="./img/register.png" alt="">
-                <a href="">Register</a>
+            <li class="list_items items_2 login">
+                <img src="./img/login.png" alt="">
+                <a>Log In</a>
             </li>
             <li class="list_items items_2">
-                <img src="./img/login.png" alt="">
-                <a href="">Log In</a>
+                <img src="./img/video.png" alt="">
+                <a href="">Video</a>
+            </li>
+            <li class="list_items items_2">
+                <img src="./img/leaderboard.png" alt="">
+                <a href="">LeaderBoard</a>
+            </li>
+            <li class="list_items items_2">
+                <img src="./img/playlist.png" alt="">
+                <a href="">Playlist</a>
             </li>
         </ul>
     </div>
@@ -182,6 +196,29 @@
                </li>
            </ul>
        </div>
+   </div>
+   <div class="register_area">
+       <form action="">
+           <input type="text" name="first_name" id="firstName" placeholder="First Name">
+           <input type="text" name="last_name" id="lastName" placeholder="Last Name">
+           <input type="text" name="acountID" id="acount" placeholder="ID">
+           <input type="text" name="email" id="email" placeholder="Email">
+           <input type="number" name="phone" id="phone" placeholder="Phone Number">
+           <div class="submit">
+               <span class="have_acount">Have an acount?</span>
+               <button type="submit">Register</button>
+           </div>
+       </form>
+   </div>
+   <div class="login_area">
+       <form action="">
+           <input type="text" name="acountID" id="acount" placeholder="ID">
+           <input type="text" name="email" id="email" placeholder="Email">
+           <div class="submit">
+               <span class="go_login">Register</span>
+               <button type="submit">Login</button>
+           </div>
+       </form>
    </div>
     <footer>
         <p class="footer">Copyright 2021 NGUYEN TIEP THANG</p>

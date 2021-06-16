@@ -15,13 +15,10 @@ const cell = (limit) => {
     }
 }
 const doubble_click = (tag) => {
-    tag.style.boxShadow = `2px 0px 5px rgba(255, 107, 129,0.6),
-                            -2px 0px 5px rgba(255, 107, 129,0.6),
-                            0px 2px 5px rgba(255, 107, 129,0.6),
-                            0px -2px 5px rgba(255, 107, 129,0.6)`
+    tag.style.background = `rgba(255, 118, 117,0.7)`;
                 const time = setTimeout(()=>{
-                    tag.style.boxShadow = `2px 4px 10px rgba(0,0,0,0.7)`
-                },1500)
+                    tag.style.background = `rgba(85, 239, 196,0.8)`
+                },1000)
 }
 const show_reset = (limit) =>{
     for(let i = 0;i<item.length;i++){

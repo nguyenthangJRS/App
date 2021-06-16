@@ -67,3 +67,30 @@ loop.onclick = () => {
     }
 }
 /////////////////////////////
+// regis form 
+register.onclick =() => {
+     music_check = !music_check;
+    show_menu_board();
+    register_flag = !register_flag;
+    register_flag ? register_login(register_area,1) : register_login(register_area,2);
+    register_flag ? animate_bg(background,1) : animate_bg(background,2);
+}
+login.onclick =() => {
+     music_check = !music_check;
+    show_menu_board();
+    loggin_flag = !loggin_flag;
+    loggin_flag ? register_login(login_area,1) : register_login(login_area,2);
+    loggin_flag ? animate_bg(background,1) : animate_bg(background,2);
+}
+have_acount.onclick = () => {
+    register_flag = false;
+    loggin_flag = true;
+    register_flag ? register_login(register_area,1) : register_login(register_area,2);
+    loggin_flag ? register_login(login_area,1) : register_login(login_area,2);
+}
+go_login.onclick = () => {
+    register_flag = true;
+    loggin_flag = false;
+    register_flag ? register_login(register_area,1) : register_login(register_area,2);
+    loggin_flag ? register_login(login_area,1) : register_login(login_area,2);
+}

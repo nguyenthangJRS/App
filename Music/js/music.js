@@ -1,4 +1,5 @@
 const music = document.querySelector('.menu');
+const menu_btn =document.querySelector('.menu_btn');
 const music_span = document.querySelectorAll('.menu_btn span');
 const list = document.querySelector('.menu_list');
 const play = document.querySelector('.play_audio');
@@ -21,6 +22,14 @@ const loop  = document.querySelector('.loop');
 const left  = document.querySelector('.left');
 const right  = document.querySelector('.right');
 const list_Li  = document.querySelectorAll('.song');
+const background  = document.querySelector('.background');
+const login  = document.querySelector('.login a');
+const register  = document.querySelector('.register a');
+const login_area  = document.querySelector('.login_area');
+const register_area  = document.querySelector('.register_area');
+const background_regis  = document.querySelector('.background_regis');
+const have_acount  = document.querySelector('.have_acount');
+const go_login  = document.querySelector('.go_login');
 
 let aSong = new Audio;
 let muted = false;
@@ -33,6 +42,8 @@ let number ;
 let music_check =false;
 let play_check = false;
 let check_volume = false;
+let register_flag = false;
+let loggin_flag = false;
 
 volume_audio.onclick = () => {
     check_volume = !check_volume;
@@ -51,24 +62,85 @@ play.onclick = () => {
     runMusic();
     playPause();
 }
-
-
-music.onclick = () =>{
-    music_check = !music_check
+const animate_bg = (local,a) => {
+    if(a == 1){
+        local.animate([
+            {transform : 'translateX(100%)',opacity : 0},
+            {transform : 'translateX(0)',opacity : 1},
+        ],{
+            duration : 200,
+            fill : 'forwards',
+        })
+    }else if(a == 2){
+        local.animate([
+            {transform : 'translateX(0%)',opacity : 1},
+            {transform : 'translateX(100%)',opacity : 0},
+        ],{
+            duration : 200,
+            fill : 'forwards',
+        })
+    }
+}
+const register_login = (local,a) => {
+    if(a == 1){
+        local.animate([
+            {transform : 'translateY(100%)',opacity : 0},
+            {transform : 'translateY(0)',opacity : 1},
+        ],{
+            duration : 200,
+            fill : 'forwards',
+        })
+    }else if(a == 2){
+        local.animate([
+            {transform : 'translateY(0%)',opacity : 1},
+            {transform : 'translateY(100%)',opacity : 0},
+        ],{
+            duration : 200,
+            fill : 'forwards',
+        })
+    }
+}
+//////////////////show menu //////////////////
+const show_menu_board = () => {
     if(music_check){
         music_span.forEach(item => {
         item.classList.add('show');
         item.classList.remove('hide')
         })
-        list.style.animation = `show_menu 0.8s ease-in-out forwards`;
+        list.style.animation = `show_menu 0.5s ease-in-out forwards`;
+        menu_btn.style.background = `#000000`;
+        animate_bg(background,1);
+       
     }else{
         music_span.forEach(item => {
         item.classList.remove('show');
         item.classList.add('hide');
         })
-        list.style.animation = `hide_menu 0.8s ease-in-out forwards`;
+        list.style.animation = `hide_menu 0.5s ease-in-out forwards`;
+        menu_btn.style.background = `unset`;
+        animate_bg(background,2);
     }
 }
+const click_background = () => {
+    if(loggin_flag || register_flag){
+        loggin_flag = false;
+        register_flag = false;
+        loggin_flag ? register_login(login_area,1) : register_login(login_area,2);
+        loggin_flag ? register_login(register_area,1) : register_login(register_area,2);
+    }
+}
+music.onclick = () =>{
+    music_check = !music_check;
+    click_background();
+    show_menu_board();
+    
+}
+background.onclick = () => {
+    music_check = false;
+    click_background();
+    show_menu_board();
+}
+
 function run(data){
     const running = document.querySelector(data.run_song);
     const songArr = running.querySelectorAll('.song img');
@@ -157,7 +229,6 @@ function run(data){
  /////////////////////////// next - prev song //////////////////////////
     left.onclick = () => {
             hide_left(page_img);
-        // find song localtion/////////////////////////////////////////////
             find_number();
         if(number > 0){
             content(song_name[number-1]);
