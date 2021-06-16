@@ -17,8 +17,10 @@ window.addEventListener('DOMContentLoaded',function(){
     $(function(){
         ScrollReveal().reveal('#btn',{duration : 9000})
     })
-    let popmsg = 'いらっしゃい！おみくじ引いてって！';
-    window.alert(popmsg)
+    setTimeout(function(){
+        let popmsg = 'いらっしゃい！おみくじ引いてって！';
+        window.alert(popmsg)
+    },5000)
 },false);
 
 /////////////////////////////////////////// 
@@ -35,61 +37,65 @@ btn.addEventListener('click',function(e){
     let n = Math.floor(Math.random()*6);
     e.target.style.animation = `result 1.5s linear `;
     const time = setTimeout (function(){
-        switch(n){
-            case 0 : {
-                type(40,'#c0392b',0);
-                break;
-            }
-            case 1 : {
-                type(30,'#e67e22',1);
-                break;
-            }
-            case 2 : {
-                type(20,'#f1c40f',2);
-                break;
-            }
-            case 3 : {
-                type(20,'#16a085',3);
-                break;
-            }
-            case 4 : {
-                type(20,'#3498db',4);
-                break;
-            }
-            case 5 : {
-                type(20,'#34495e',5);
-                break;
-            }
-        }
+        n === 0 ?  type(40,'#c0392b',0) :n===1 ?  type(34,'#e67e22',1) : n===2 ? type(30,'#f1c40f',2) :n===3 ? type(25,'#16a085',3) :
+        n===4 ? type(20,'#3498db',4) : type(16,'#c8d6e5',5)
         e.target.style.animation = `none `;
-
     },2000);
 
     // snowfall stop
     $(document).snowfall('clear');
+    if(n===0){
+
+    }
     // snowfall
+    const rain = (img) => {
+        $(document).snowfall({
+            maxSpeed : 5,
+            minSpeed : 1,
+            maxSize : 20,
+            minSize : 1,
+            image : img
+        })
+    } 
     $(document).ready(function(){
-        $(document).snowfall({
-            maxSpeed : 5,
-            minSpeed : 1,
-            maxSize : 20,
-            minSize : 1,
-            image : 'img/sakura_hanabira.png'
-        })
-        $(document).snowfall({
-            maxSpeed : 5,
-            minSpeed : 1,
-            maxSize : 20,
-            minSize : 1,
-            image : 'img/snowflakes.png'
-        })
-        $(document).snowfall({
-            maxSpeed : 5,
-            minSpeed : 1,
-            maxSize : 20,
-            minSize : 1,
-            image : 'img/star.png'
-        })
+        setTimeout(()=>{
+            if(n === 5){
+                rain('img/snowflakes.png');
+            }
+            if(n === 4){
+                rain('img/snowflakes.png');
+                rain('img/star.png');
+            }
+            if(n === 3){
+                rain('img/snowflakes.png');
+                rain('img/star.png');
+                rain('img/sakura_hanabira.png');
+            }
+            if(n === 2){
+                rain('img/snowflakes.png');
+                rain('img/star.png');
+                rain('img/sakura_hanabira.png');
+                rain('img/banana.png');
+            }
+            if(n === 1){
+                rain('img/snowflakes.png');
+                rain('img/star.png');
+                rain('img/sakura_hanabira.png');
+                rain('img/banana.png');
+                rain('img/banana.png');
+                rain('img/banana.png');
+            }
+            if(n === 0){
+                rain('img/snowflakes.png');
+                rain('img/star.png');
+                rain('img/sakura_hanabira.png');
+                rain('img/banana.png');
+                rain('img/banana.png');
+                rain('img/banana.png');
+                rain('img/stawberry.png');
+            }
+        },2000)
+        
     })
   
 },false)
