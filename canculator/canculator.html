@@ -2,40 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/canculator/icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/canculator.css">
-    <link rel="stylesheet" href="../header.css">
+    <link rel="shortcut icon" href="./calc.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/canc.css">
     <title>Document</title>
 </head>
 <body>
+    
     <div class="btn__back">
-        <a href="../index.html " class="back">Back</a>
+        <a href="../index.html" class="back">Back</a>
     </div>
-    <div class="animation-1"></div>
-    <div class="animation-2"></div>
-    <div class="animation-load"></div>
-    <div class="canculator">
-        <form action="" class="form">
-            <input type="number" name='number1' class="number1" placeholder="Enter number">
-            <select name="select" id="calc" class="select">
-                <option value="0">+</option>
-                <option value="1">-</option>
-                <option value="2">x</option>
-                <option value="3">/</option>
-                <option value="3">%</option>
-            </select>
-            <input type="number" name='number2' class="number2" placeholder="Enter number">
-            <button type="submit"class='submit'>Enter</button>
-        </form>
-        <div class="result">
-            <span></span>
+    <div class="main">
+        <div class="question">
+            <span class="ques"></span>
+        </div>
+        <div class="ans">
+            <span class="ans_zone"></span>
+        </div>
+        <div class="canculator">
+            <span class="key key_0">0</span>
+           <span class="key key_1">1</span>
+           <span class="key key_2">2</span>
+           <span class="key key_3">3</span>
+           <span class="key key_4">4</span>
+           <span class="key key_5">5</span>
+           <span class="key key_6">6</span>
+           <span class="key key_7">7</span>
+           <span class="key key_8">8</span>
+           <span class="key key_9">9</span>
+           <span class="key key_14">Del</span>
+           <span class="key key_10">+</span>
+           <span class="key key_11">-</span>
+           <span class="key key_12">x</span>
+           <span class="key key_13">:</span>
+           <span class="key key_17">.</span>
+           <span class="key key_15">Enter</span>
+           <span class="key key_16">AC</span>
         </div>
     </div>
-    <div class="clean">Clean</div>
-    <footer>
-        <p class="footer">Copyright 2021 NGUYEN TIEP THANG</p>
-    </footer>
-    <script src="js/calc.js"></script>
+    <script src="./js/game.js"></script>
 </body>
 </html>

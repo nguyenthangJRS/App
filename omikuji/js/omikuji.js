@@ -1,102 +1,76 @@
+"use strict";
+let n = "";
+let nBefore = "";
 
+window.addEventListener("DOMContentLoaded",
+    function() {
+        $("header").textillate({
+            loop: false,
+            minDisplayTime: 2000,
+            initialDelay: 2000,
+            autoStart: true,
+            in: {
+                effect: "fadeIntellectBig",
+                delayScale: 1.5,
+                delay: 50,
+                sync: false,
+                shuffle: true
+            }
 
-window.addEventListener('DOMContentLoaded',function(){
-    $("header").textillate({
-        loop : false,
-        minDisplayTime : 2000,
-        initialDelay : 2000,
-        autoStart : true,
-        in : {
-            effect : 'fadeInLeftBig',
-            delayScale : 1.5,
-            delay : 50,
-            sync : false,
-            shuffle : true
+        });
+        $(function() {
+            ScrollReveal().reveal("#btn1", { duration: 9000 });
+        });
+        setTimeout(
+            function() {
+                let popMessage = "いらっしゃい！おみくじ引いてって！";
+                window.alert(popMessage);
+            },
+            "3000"
+        );
+    }, false
+);
+
+const btn1 = document.getElementById("btn1");
+const omikujiText = document.getElementById("omikujiText");
+const omikujiTextImage = document.getElementById("omikujiTextImage");
+
+omikujiTextImage.style.opacity = 0;
+
+btn1.addEventListener("click",
+    function() {
+
+        let resultText = ["./image/1.jpg", "./image/2.jfif", "./image/3.jpg", "./image/4.png", "./image/5.jpg"];
+        while(n === nBefore){
+            n = Math.floor(Math.random() * resultText.length);
         }
-    });
-    $(function(){
-        ScrollReveal().reveal('#btn',{duration : 9000})
-    })
-    setTimeout(function(){
-        let popmsg = 'いらっしゃい！おみくじ引いてって！';
-        window.alert(popmsg)
-    },5000)
-},false);
+        nBefore = n;
 
-/////////////////////////////////////////// 
-const arr = ["大吉!!!!!","吉!!!!","中吉!!!","小吉!!","末吉!","凶。。"];
-const btn = document.getElementById('btn');
-const result = document.querySelector('.result');
+        let resultMaxSpeed = [10, 10, 8, 5, 5,];
+        let resultMaxSize = [30, 30, 30,40,30];
+        let resultImage = ["image/33.png", "image/31.png", "image/sakura_hanabira.png", "image/28.png", "image/32.png"];
+        let resultSound = ["sound/omikuji_sound1.mp3", "sound/omikuji_sound2.mp3", "sound/omikuji_sound3.mp3", "sound/omikuji_sound1.mp3", "sound/omikuji_sound2.mp3"]
 
-const type = (fontSise,color,number) => {
-            result.style.fontSize = `${fontSise}px`;
-            result.style.background = `${color}`;
-            result.textContent = arr[number]
-}
-btn.addEventListener('click',function(e){
-    let n = Math.floor(Math.random()*6);
-    e.target.style.animation = `result 1.5s linear `;
-    const time = setTimeout (function(){
-        n === 0 ?  type(40,'#c0392b',0) :n===1 ?  type(34,'#e67e22',1) : n===2 ? type(30,'#f1c40f',2) :n===3 ? type(25,'#16a085',3) :
-        n===4 ? type(20,'#3498db',4) : type(16,'#c8d6e5',5)
-        e.target.style.animation = `none `;
-    },2000);
+        omikujiTextImage.src = resultText[n];
+        omikujiTextImage.classList.add("omikujiPaper");
+        omikujiTextImage.addEventListener("animationend",() => {
+                omikujiTextImage.classList.remove('omikujiPaper');
+                omikujiTextImage.style.opacity = 1;
+            },false
+        );
 
-    // snowfall stop
-    $(document).snowfall('clear');
-    if(n===0){
-
-    }
-    // snowfall
-    const rain = (img) => {
-        $(document).snowfall({
-            maxSpeed : 5,
-            minSpeed : 1,
-            maxSize : 20,
-            minSize : 1,
-            image : img
+        $(document).snowfall("clear");
+        $(document).ready(function() {
+            $(document).snowfall({
+                maxSpeed: resultMaxSpeed[n],
+                minSpeed: 1,
+                maxSize: resultMaxSize[n],
+                minSize: 1,
+                image: resultImage[n],
+            })
         })
-    } 
-    $(document).ready(function(){
-        setTimeout(()=>{
-            if(n === 5){
-                rain('img/snowflakes.png');
-            }
-            if(n === 4){
-                rain('img/snowflakes.png');
-                rain('img/star.png');
-            }
-            if(n === 3){
-                rain('img/snowflakes.png');
-                rain('img/star.png');
-                rain('img/sakura_hanabira.png');
-            }
-            if(n === 2){
-                rain('img/snowflakes.png');
-                rain('img/star.png');
-                rain('img/sakura_hanabira.png');
-                rain('img/banana.png');
-            }
-            if(n === 1){
-                rain('img/snowflakes.png');
-                rain('img/star.png');
-                rain('img/sakura_hanabira.png');
-                rain('img/banana.png');
-                rain('img/banana.png');
-                rain('img/banana.png');
-            }
-            if(n === 0){
-                rain('img/snowflakes.png');
-                rain('img/star.png');
-                rain('img/sakura_hanabira.png');
-                rain('img/banana.png');
-                rain('img/banana.png');
-                rain('img/banana.png');
-                rain('img/stawberry.png');
-            }
-        },2000)
-        
-    })
-  
-},false)
-
+        let music= new Audio(resultSound[n]);
+        music.currentTime=0;
+        music.play();
+    }, false
+);
