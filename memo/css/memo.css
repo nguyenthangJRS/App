@@ -43,7 +43,7 @@ body {
 
 header,
 main,
-footer,
+
 h1,
 h2,
 h3,
@@ -55,6 +55,17 @@ table,
 .filler01 {
     margin: 0.5em 0em 0em 0em;
     padding: 0.1em;
+}
+footer>p {
+    position: absolute;
+    left : 0px;
+    bottom: 5px;
+    width: 100%;
+    margin: 0;
+    padding: 1 whitesmoke;
+    font: 16px Rajdhani;
+    text-align: center;
+    background: rgba(239, 246, 248, 0.7);
 }
 
 th,

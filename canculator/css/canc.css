@@ -161,6 +161,18 @@
     background-color: rgba(9, 132, 227,0.8);
 }
 
+footer>p {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  margin: 0;
+  padding: 1 whitesmoke;
+  font: 16px Rajdhani;
+  text-align: center;
+  background: rgba(239, 246, 248, 0.7);
+}
+
+
 @media (max-width : 785px){
     .main {
         margin-top: 30px;
