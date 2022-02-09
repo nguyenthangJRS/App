@@ -1,64 +1,120 @@
-window.addEventListener('DOMContentLoaded',function(){
-    const ques = document.querySelector('.ques');
-    const ans_zone = document.querySelector('.ans_zone');
-    const array_key =document.querySelectorAll('.key');
+"use strict";
 
-    array_key.forEach(item => {
-        item.onclick = (e) => {
-            let key = e.target.innerHTML;
-            let result;
-            let rel = '';
-            
-            if(key != 'Del' && key != 'AC' && key != 'Enter'){
-                ques.textContent += key;
-            }
-            // fix string start 0
-            let string = ques.textContent.startsWith('0') ? ques.textContent.substr(1,ques.textContent.length) : ques.textContent;
+const input = document.querySelector(".input");
+const result = document.querySelector(".result");
+const deleteBtn = document.querySelector(".delete");
+const keys = document.querySelectorAll(".bottom span");
 
-            console.log(string);
-            // show result
-            const ans = () => {
-                rel  = string.replaceAll('x','*').replaceAll(':','/').replaceAll(',','');
-               return result = rel;
-            }
-            // delete character
-            const del = () => {
-                let newString =  string.substr(0,string.length -1);
-                return newString;
-            }
-            ans();
+let operation = "";
+let answer;
+let decimalAdded = false;
 
-            
-            // check pressed key
-            switch(key){
-                case 'Del' : {
-                    ques.textContent = del();
-                    break;
-                }
-                case '.':{
-                    if(string.length === 1){
-                        string = '0'
-                    }
-                    break;
-                } 
-                case '+': 
-                case '-': 
-                case 'x': 
-                case ':': { break; }
-                case 'AC' : {
-                    ques.textContent = '';
-                    ans_zone.textContent = '';
-                    break;
-                }
-                case 'Enter':{  
-                    ques.textContent = ques.textContent.length === 0 ? 0 : (Math.round(eval(result)*1000)/1000).toLocaleString('en');
-                    ans_zone.textContent = '';
-                    break;
-                }
-                default : {
-                    ans_zone.textContent = string === '' ? 0 : (Math.round(eval(result)*1000)/1000).toLocaleString('en');
-                }
-            }
-        }
-    })
-},false)
+const operators = ["+", "-", "x", "÷"];
+
+function handleKeyPress (e) {
+  const key = e.target.dataset.key;
+  const lastChar = operation[operation.length - 1];
+
+  if (key === "=") {
+    return;
+  }
+
+  if (key === "." && decimalAdded) {
+    return;
+  }
+
+  if (operators.indexOf(key) !== -1) {
+    decimalAdded = false;
+  }
+
+  if (operation.length === 0 && key === "-") {
+    operation += key;
+    input.innerHTML = operation;
+    return;
+  }
+
+  if (operation.length === 0 && operators.indexOf(key) !== -1) {
+    input.innerHTML = operation;
+    return;
+  }
+
+  if (operators.indexOf(lastChar) !== -1 && operators.indexOf(key) !== -1) {
+    operation = operation.replace(/.$/, key);
+    input.innerHTML = operation;
+    return;
+  }
+
+  if (key) {
+    if (key === ".") decimalAdded = true;
+    operation += key;
+    input.innerHTML = operation;
+    return;
+  }
+
+}
+
+function evaluate(e) {
+  const key = e.target.dataset.key;
+  const lastChar = operation[operation.length - 1];
+
+  if (key === "=" && operators.indexOf(lastChar) !== -1) {
+    operation = operation.slice(0, -1);
+  }
+
+  if (operation.length === 0) {
+    answer = "";
+    result.innerHTML = answer;
+    return;
+  }
+
+  try {
+
+    if (operation[0] === "0" && operation[1] !== "." && operation.length > 1) {
+      operation = operation.slice(1);
+    }
+
+    const final = operation.replace(/x/g, "*").replace(/÷/g, "/");
+    answer = +(eval(final)).toFixed(5);
+
+    if (key === "=") {
+      decimalAdded = false;
+      operation = `${answer}`;
+      answer = "";
+      input.innerHTML = operation;
+      result.innerHTML = answer;
+      return;
+    }
+
+    result.innerHTML = answer;
+
+  } catch (e) {
+    if (key === "=") {
+      decimalAdded = false;
+      input.innerHTML = `<span class="error">${operation}</span>`;
+      result.innerHTML = `<span class="error">Bad Expression</span>`;
+    }
+    console.log(e);
+  }
+
+}
+
+function clearInput (e) {
+
+  if (e.ctrlKey) {
+    operation = "";
+    answer = "";
+    input.innerHTML = operation;
+    result.innerHTML = answer;
+    return;
+  }
+
+  operation = operation.slice(0, -1);
+  input.innerHTML = operation;
+
+}
+
+deleteBtn.addEventListener("click", clearInput);
+keys.forEach(key => {
+  key.addEventListener("click", handleKeyPress);
+  key.addEventListener("click", evaluate);
+});

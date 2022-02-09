@@ -13,34 +13,55 @@
     <div class="btn__back">
         <a href="../index.html" class="back">Back</a>
     </div>
-    <div class="main">
-        <div class="question">
-            <span class="ques"></span>
+    <main class="calculator">
+
+        <div class="top">
+    
+          <span class="unit">deg</span>
+          <section class="screen">
+            <div class="input"></div>
+            <div class="result"></div>
+          </section>
+    
         </div>
-        <div class="ans">
-            <span class="ans_zone"></span>
+    
+        <div class="bottom">
+    
+          <section class="keys">
+    
+            <div class="column">
+              <span data-key="7">7</span>
+              <span data-key="4">4</span>
+              <span data-key="1">1</span>
+              <span data-key=".">.</span>
+            </div>
+    
+            <div class="column">
+              <span data-key="8">8</span>
+              <span data-key="5">5</span>
+              <span data-key="2">2</span>
+              <span data-key="0">0</span>
+            </div>
+    
+            <div class="column">
+              <span data-key="9">9</span>
+              <span data-key="6">6</span>
+              <span data-key="3">3</span>
+              <span class="equals-to" data-key="=">=</span>
+            </div>
+          </section>
+    
+          <section class="operators">
+            <span class="delete">del</span>
+            <span data-key="÷">÷</span>
+            <span data-key="x">x</span>
+            <span data-key="-">-</span>
+            <span data-key="+">+</span>
+          </section>
+    
         </div>
-        <div class="canculator">
-            <span class="key key_0">0</span>
-           <span class="key key_1">1</span>
-           <span class="key key_2">2</span>
-           <span class="key key_3">3</span>
-           <span class="key key_4">4</span>
-           <span class="key key_5">5</span>
-           <span class="key key_6">6</span>
-           <span class="key key_7">7</span>
-           <span class="key key_8">8</span>
-           <span class="key key_9">9</span>
-           <span class="key key_14">Del</span>
-           <span class="key key_10">+</span>
-           <span class="key key_11">-</span>
-           <span class="key key_12">x</span>
-           <span class="key key_13">:</span>
-           <span class="key key_17">.</span>
-           <span class="key key_15">Enter</span>
-           <span class="key key_16">AC</span>
-        </div>
-    </div>
+    
+      </main>
     <script src="./js/game.js"></script>
 </body>
 </html>

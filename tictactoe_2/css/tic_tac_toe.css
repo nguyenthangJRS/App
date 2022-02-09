@@ -13,10 +13,10 @@ body{
     font-family: "Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",
     Meiryo,sans-serif;
     overflow: hidden;
-    background: rgb(47, 90, 199);
-    background: linear-gradient(270deg, rgb(47, 90, 199) 28%, hsla(0, 0%, 100%, 1) 71%);
-    background: -moz-linear-gradient(270deg, rgb(47, 90, 199) 28%, hsla(0, 0%, 100%, 1) 71%);
-    background: -webkit-linear-gradient(270deg, rgb(47, 90, 199) 28%, hsla(0, 0%, 100%, 1) 71%);
+    background: rgb(9, 132, 227);
+    background: linear-gradient(270deg, rgb(9, 132, 227) 28%, hsla(0, 0%, 100%, 1) 71%);
+    background: -moz-linear-gradient(270deg, rgb(9, 132, 227) 28%, hsla(0, 0%, 100%, 1) 71%);
+    background: -webkit-linear-gradient(270deg, rgb(9, 132, 227) 28%, hsla(0, 0%, 100%, 1) 71%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#25F5D6", endColorstr="#FFFFFF", GradientType=1 );
     
 }
